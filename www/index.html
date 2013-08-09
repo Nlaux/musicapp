@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/styles.css" />
+        <title>Key Transposer</title>
+    </head>
+    <body>
+        <div id="screenWrapper">
+        	<div id="contentWrapper">
+        	
+	            <div id="instBtnWrapper">
+	            	<div class="modalWrapper marginBot">
+	            		<h1>Convert From:</h1>
+	            		<div class="instBox"><a class="instBtnLink" href="#" data-value="Bb" title="Bass Clarinet, Clarinet, Baritone Treble Cleff, Tenor Sax, Trumpet ">Bb</a></div>
+	            		<div class="instBox"><a class="instBtnLink" href="#" data-value="C" title="Piano, Vioin, Flute, Oboe, Bass Cleft Trombone, Baritone BC, Tuba">C</a></div>
+	            		<div class="instBox"><a class="instBtnLink" href="#" data-value="Eb" title="Alto Sax, Baritone Sax">Eb</a></div>
+	            		<div class="instBox"><a class="instBtnLink" href="#" data-value="F" title="French Horn">F</a></div>
+	            	</div>
+	            	
+	            	<div class="modalWrapper">
+	            		<h1>Convert To:</h1>
+	            		<div class="instBox2"><a class="instBtnLink2" href="#" data-value="Bb" title="Bass Clarinet, Clarinet, Baritone Treble Cleff, Tenor Sax, Trumpet ">Bb</a></div>
+	            		<div class="instBox2"><a class="instBtnLink2" href="#" data-value="C" title="Piano, Vioin, Flute, Oboe, Bass Cleft Trombone, Baritone BC, Tuba">C</a></div>
+	            		<div class="instBox2"><a class="instBtnLink2" href="#" data-value="Eb" title="Alto Sax, Baritone Sax">Eb</a></div>
+	            		<div class="instBox2"><a class="instBtnLink2" href="#" data-value="F" title="French Horn">F</a></div>
+	            	</div>
+	            </div>
+	            
+	            <hr />
+	              
+	            <div id="transPickerWrapper">
+	            	<div class="modalWrapper marginBot">
+		            	<a class="buttonLink" rel="ibox" data-name="but1" href='#notePicker'>
+							<div class="box">
+								<div id="but1" class="noteLabel"><span></span><span class="supNote"></span></div>
+							</div>
+						</a>
+						
+						<a class="buttonLink" rel="ibox" data-name="but2" href='#notePicker'>
+							<div class="box">
+								<div id="but2" class="noteLabel"><span></span><span class="supNote"></span></div>
+							</div>
+						</a>
+						
+						<a class="buttonLink" rel="ibox" data-name="but3" href='#notePicker'>
+							<div class="box">
+								<div id="but3" class="noteLabel"><span></span><span class="supNote"></span></div>
+							</div>
+						</a>
+						
+						<a class="buttonLink" rel="ibox" data-name="but4" href='#notePicker'>
+							<div class="box">
+								<div id="but4" class="noteLabel"><span></span><span class="supNote"></span></div>
+							</div>
+						</a>
+	            	</div>
+				
+					<div class="modalWrapper">
+						<a class="buttonLink" rel="ibox" data-name="but5" href='#notePicker'>
+							<div class="box">
+								<div id="but5" class="noteLabel"><span></span><span class="supNote"></span></div>
+							</div>
+						</a>
+						
+						<a class="buttonLink" rel="ibox" data-name="but6" href='#notePicker'>
+							<div class="box">
+								<div id="but6" class="noteLabel"><span></span><span class="supNote"></span></div>
+							</div>
+						</a>
+						
+						<a class="buttonLink" rel="ibox" data-name="but7" href='#notePicker'>
+							<div class="box">
+								<div id="but7" class="noteLabel"><span></span><span class="supNote"></span></div>
+							</div>
+						</a>
+						
+						<a class="resetLink" href='#'>
+							<div class="resetBox">
+								<div id="reset">
+									<img class="resetImg" src="img/reset.png" alt="reset" width="50" height="53">
+								</div>
+							</div>
+						</a>
+					</div>
+	            	
+	            </div><!--closes transPickerWrapper --> 
+	            
+	                                    
+			</div><!--closes contentWrapper -->
+        </div><!--closes screenWrapper -->
+        
+        <!--hidden notePicker Content -->		
+		
+		<div id="notePicker" class="noteWrapper firstRow">
+			<div class="noteName firstItem">
+				<a class="noteLink" data-value="A" href="#">A</a>
+			</div>
+			<div class="noteName">
+				<a class="noteLink" data-value="B" href="#">B</a>
+			</div>
+			<div class="noteName">
+				<a class="noteLink" data-value="C" href="#">C</a>
+			</div>
+			<div class="noteName firstItem">
+				<a class="noteLink" data-value="D" href="#">D</a>
+			</div>
+			<div class="noteName">
+				<a class="noteLink" data-value="E" href="#">E</a>
+			</div>
+			<div class="noteName">
+				<a class="noteLink" data-value="F" href="#">F</a>
+			</div>
+			<div class="noteName firstItem">
+				<a class="noteLink" data-value="G" href="#">G</a>
+			</div>
+			<div id="sharp" class="noteNameModSharp">
+				<a id="nlsSharp" class="noteLink" data-value="#" href="#">#</a>
+			</div>
+			<div id="flat" class="noteNameModFlat">
+				<a id="nlsFlat" class="noteLink" data-value="b" href="#">b</a>
+			</div>
+		</div>
+
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/ibox.js"></script>
+        <script type="text/javascript" src="js/convert.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+    </body>
+</html>
