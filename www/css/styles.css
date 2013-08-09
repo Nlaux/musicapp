@@ -79,7 +79,7 @@ a.instBtnLink, a.instBtnLink2  {
 	text-decoration: none;
 }
 
-.noteHighlight, .instBtnLinkHighlight, .instBtnLinkHighlight2, .resetHighlightLink {
+.noteHighlight, .instBtnLinkHighlight, .instBtnLinkHighlight2 {
 	color:#0e80c8 !important;
 }
 
@@ -262,5 +262,16 @@ hr {
 
 .resetImg {
 	float: left;
+	width:50px;
+	height:53px;
     margin: 10px 0 0 15px;
+    background:url(../img/reset.png) 0 0  no-repeat;
+}
+
+.resetImgHover {
+	float: left;
+	width:50px;
+	height:53px;
+    margin: 10px 0 0 15px;
+    background:url(../img/reset_hover.png) 0 0  no-repeat;
 }

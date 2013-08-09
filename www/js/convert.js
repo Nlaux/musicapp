@@ -3,13 +3,17 @@ var firstInstSelected, secondInstSelected, firstNote, secondNote, butCheck, butt
 
 $(function() {
 	$('.resetLink').click(function() {
+		//toggle button image to highlight
+		$('#resetBtnImg').removeClass("resetImg");
+		$('#resetBtnImg').addClass("resetImgHover");
+		
+		//reset note buttons
     	firstInstSelected = undefined, secondInstSelected = undefined, firstNote = undefined, secondNote = undefined, butCheck = undefined, buttonSelected = undefined;
     	
     	$('.instBox').removeClass("instBoxDown");
 		$('.instBtnLink').removeClass("instBtnLinkHighlight");
 		$('.instBox2').removeClass("instBoxDown2");
 		$('.instBtnLink2').removeClass("instBtnLinkHighlight2");
-		
 		$('#but1').find('span:first').text("");
 		$('#but1').find('span:last').text("");
 		$('#but2').find('span:first').text("");
@@ -24,9 +28,15 @@ $(function() {
 		$('#but6').find('span:last').text("");
 		$('#but7').find('span:first').text("");
 		$('#but7').find('span:last').text("");
-		   									
+		
+		//reset back to normal button img
+		removeRHI();
     })
 })
+
+function removeRHI() {
+	setTimeout(function(){$('#resetBtnImg').removeClass("resetImgHover").addClass("resetImg")},1000);
+}
 				
 $(function() {
 	$('.instBtnLink').click(function() {
