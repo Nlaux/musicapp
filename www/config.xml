@@ -1,19 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
-
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      package="com.loxxdesign.key.transposer"
-      android:versionCode="1"
-      android:versionName="1.0">
-    <application android:icon="@drawable/icon" android:label="@string/app_name">
-        ...
-    </application>
-</manifest>
 
 <widget xmlns = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id = "com.loxxdesign.key-transposer"
+        versionCode="1"
+        versionName="1.0"
         version = "1.0.0">
 
     <name>Key Transposer</name>
