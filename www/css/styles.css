@@ -8,50 +8,20 @@
 	padding:0;
 }
 
+html, body {
+	height:100%;
+	
+}
 body {
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
     font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
     font-size:12px;
-    height:100%;
     margin:0;
     padding:0;
     width:100%;
     background-attachment:fixed;
-}
-
-
-/*-----Portrait layout - 480px-----*/
-#screenWrapper {
-	float:left;
-	width:100%;
-	margin:0;
-	padding:0;
-	background: #cfe7fa; /* Old browsers */
-    background: -moz-linear-gradient(top,  #cfe7fa 0%, #6393c1 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#cfe7fa), color-stop(100%,#6393c1)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top,  #cfe7fa 0%,#6393c1 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top,  #cfe7fa 0%,#6393c1 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top,  #cfe7fa 0%,#6393c1 100%); /* IE10+ */
-    background: linear-gradient(to bottom,  #cfe7fa 0%,#6393c1 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cfe7fa', endColorstr='#6393c1',GradientType=0 ); /* IE6-9 */
-
-}
-
-#contentWrapper {
-	width:640px;
-	margin:0 auto;
-}
-
-/* Landscape layout (with min-width) */
-@media screen and (min-aspect-ratio: 1/1) and (min-width:600px) {
-    .app {
-        background-position:left center;
-        padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
-        margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
-                                      /* offset horizontal: half of image width and text area width */
-    }
 }
 
 /*-----Fonts & links-----*/
@@ -85,6 +55,28 @@ a.instBtnLink, a.instBtnLink2  {
 
 
 /*-----Wrappers & Containers-----*/
+#screenWrapper {
+	float:left;
+	width:100%;
+	height:100%;
+	margin:0;
+	padding:0;
+	 background: #cfe7fa; /* Old browsers */
+    background: -moz-linear-gradient(top,  #cfe7fa 0%, #6393c1 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#cfe7fa), color-stop(100%,#6393c1)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #cfe7fa 0%,#6393c1 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #cfe7fa 0%,#6393c1 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #cfe7fa 0%,#6393c1 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #cfe7fa 0%,#6393c1 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cfe7fa', endColorstr='#6393c1',GradientType=0 ); /* IE6-9 */
+	
+}
+
+#contentWrapper {
+	width:640px;
+	margin:0 auto;
+}
+
 #instBtnWrapper {
 	width:100%;
 }
@@ -275,3 +267,20 @@ hr {
     margin: 10px 0 0 15px;
     background:url(../img/reset_hover.png) 0 0  no-repeat;
 }
+
+
+/*--- Media Queries --*/
+
+/*-----Portrait layout - 480px-----*/
+/* Landscape layout (with min-width) */
+/*
+@media screen and (min-aspect-ratio: 1/1) and (min-width:600px) {
+    .app {
+        background-position:left center;
+        padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
+        /*margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
+                                      /* offset horizontal: half of image width and text area width */
+   /* }
+}
+*/
+
