@@ -57,7 +57,6 @@ a.instBtnLink, a.instBtnLink2  {
 #screenWrapper {
 	float:left;
 	width:100%;
-	height:100%;
 	margin:0;
 	padding:0;
 	 background: #cfe7fa; /* Old browsers */
@@ -263,6 +262,10 @@ hr {
 
 /* Smartphones (portrait) ----------- */
 @media only screen and (max-width : 320px) {
+	#screenwrapper {
+		height:100%;
+	}
+	
 	#contentWrapper {
 		width:320px;
 		margin:0;
@@ -333,20 +336,28 @@ hr {
 
 /* iPhone 4 ----------- */
 @media only screen and (-webkit-min-device-pixel-ratio : 1.5), only screen and (min-device-pixel-ratio : 1.5) {
-/* Styles */
+	#screenwrapper {
+		height:100%;
+	}
 }
 
 /* small Tablet (portrait) ----------- */
 @media only screen and (min-device-width : 599px) and (max-device-width : 1024px) and (orientation : portrait) {
-
+	#screenwrapper {
+		height:100%;
+	}
 }
 
 /* iPads (portrait) ----------- */
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
-
+	#screenwrapper {
+		height:100%;
+	}
 }
 /* iPads (landscape) ----------- */
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
-/* Styles */
+	#screenwrapper {
+		height:100%;
+	}
 }
 
