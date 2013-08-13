@@ -171,7 +171,6 @@ $(function() {
 			secondNote = $(this).data('value');
 			
 			if (secondNote == "#" || secondNote == "b") {
-				secondNote = $(this).data('value');
 				$('#' + buttonSelected).addClass("doubleNote");
 				noteConverter();
 				//$('#' + buttonSelected).find('span:last').text(secondNote);
@@ -186,7 +185,7 @@ $(function() {
 	function noteConverter() {
 		//C to Bb Conversion
 		if (firstInstSelected == "C" || secondInstSelected == "Bb") {
-			if (firstNote == "A" && secondNote == "") {
+			if (firstNote == "A" && secondNote == undefined) {
 				$('#' + buttonSelected).find('span:first').text("B");
 				$('#' + buttonSelected).find('span:last').text("");			
 			}
@@ -196,12 +195,12 @@ $(function() {
 				$('#' + buttonSelected).find('span:last').text("");	
 			}
 			
-			if (firstNote == "B" && secondNote == "") {
+			if (firstNote == "B" && secondNote == undefined) {
 				$('#' + buttonSelected).find('span:first').text("C");
 				$('#' + buttonSelected).find('span:last').text("#");			
 			}
 			
-			if (firstNote == "C" && secondNote == "") {
+			if (firstNote == "C" && secondNote == undefined) {
 				$('#' + buttonSelected).find('span:first').text("D");
 				$('#' + buttonSelected).find('span:last').text("");			
 			}
@@ -211,7 +210,7 @@ $(function() {
 				$('#' + buttonSelected).find('span:last').text("b");			
 			}
 			
-			if (firstNote == "D" && secondNote == "") {
+			if (firstNote == "D" && secondNote == undefined) {
 				$('#' + buttonSelected).find('span:first').text("E");
 				$('#' + buttonSelected).find('span:last').text("");		
 			}
@@ -221,12 +220,12 @@ $(function() {
 				$('#' + buttonSelected).find('span:last').text("");			
 			}
 			
-			if (firstNote == "E" && secondNote == "") {
+			if (firstNote == "E" && secondNote == undefined) {
 				$('#' + buttonSelected).find('span:first').text("F");
 				$('#' + buttonSelected).find('span:last').text("#");		
 			}
 			
-			if (firstNote == "F" && secondNote == "") {
+			if (firstNote == "F" && secondNote == undefined) {
 				$('#' + buttonSelected).find('span:first').text("G");
 				$('#' + buttonSelected).find('span:last').text("");		
 			}
@@ -236,7 +235,7 @@ $(function() {
 				$('#' + buttonSelected).find('span:last').text("b");			
 			}
 			
-			if (firstNote == "G" && secondNote == "") {
+			if (firstNote == "G" && secondNote == undefined) {
 				$('#' + buttonSelected).find('span:first').text("A");
 				$('#' + buttonSelected).find('span:last').text("");		
 			}
