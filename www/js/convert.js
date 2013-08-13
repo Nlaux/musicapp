@@ -1,6 +1,5 @@
 var firstInstSelected, secondInstSelected, firstNote, secondNote, butCheck, buttonSelected; 
 
-
 $(function() {
 	$('.resetLink').click(function() {
 		//toggle button image to highlight
@@ -47,7 +46,7 @@ $(function() {
 		$('.instBtnLink').removeClass("instBtnLinkHighlight");
 		
 		//add highlight to currently selected button
-		$(this.parentNode).addClass("instBoxDown");
+		$(this.childNodes).addClass("instBoxDown");
     	$(this).addClass("instBtnLinkHighlight");
     	
     	//if same button selected, alert
@@ -71,7 +70,7 @@ $(function() {
 		$('.instBtnLink2').removeClass("instBtnLinkHighlight2");
 		
 		//add highlight to currently selected button
-		$(this.parentNode).addClass("instBoxDown2");
+		$(this.childNodes).addClass("instBoxDown2");
     	$(this).addClass("instBtnLinkHighlight2");
     	
     	//if same button selected, alert
@@ -108,181 +107,190 @@ $(function() {
 
 $(function() {
 	$('.noteLink').click(function() {
-		
-		//if modifier button pressed
-		//get modifer button
 		var butPressed = this.parentNode.id;
 		
-		if (butPressed == "sharp") {
+		//get New Note Value
+		var newNoteTemp = $(this).data('value');
+		
+		//get Previous Note Value
+		var oldNoteTemp = firstNote;
+		
+		//first Time selecting a note, or first note selected # or b.
+		if (oldNoteTemp == undefined) {
+			if (butPressed == "sharp") {
     		$('.noteNameModSharp').toggleClass("noteNameDown");
-			$('#nlsSharp').toggleClass("noteHighlight");
-			$('.noteNameModFlat').removeClass("noteNameDown");
-			$('#nlsFlat').removeClass("noteHighlight");
-			
-			//clear button contents
-			var butTextTemp = $('#' + buttonSelected).find('span:last').text();
-			
-				if (butTextTemp == "#") {
-					$('#' + buttonSelected).find('span:last').text("");
-					return;
-				}
-			
+				$('#nlsSharp').toggleClass("noteHighlight");
+				$('.noteNameModFlat').removeClass("noteNameDown");
+				$('#nlsFlat').removeClass("noteHighlight");
+				
+				secondNote = newNoteTemp;
+				return;
+				
 			} else if (butPressed == "flat") {
 				$('.noteNameModFlat').toggleClass("noteNameDown");
 				$('#nlsFlat').toggleClass("noteHighlight");
 				$('.noteNameModSharp').removeClass("noteNameDown");
 				$('#nlsSharp').removeClass("noteHighlight");
 				
-				//clear button contents
-				var butTextTemp = $('#' + buttonSelected).find('span:last').text();
-			
-				if (butTextTemp == "b") {
-					$('#' + buttonSelected).find('span:last').text("");
-					return;
-				}
-
+				secondNote = newNoteTemp;
+				return;
+				
 			} else {
-				//remove All selected buttons, except modifier buttons
 				$('.noteName').removeClass("noteNameDown");
 				$('.noteLink').removeClass("noteHighlight");
-		
+				
 				//add to currently selected button
 				$(this.parentNode).addClass("noteNameDown");
 				$(this).addClass("noteHighlight");
+				
+				firstNote = newNoteTemp;
+				noteConverter();
 			}
-	
-		
-		//get First Note Value
-		firstNote = $(this).data('value');
-		
-		//If the firstNote clicked is a sharp or flat, drop in second note position
-		if (firstNote == "#" || firstNote == "b") {
-				$('#' + buttonSelected).addClass("doubleNote");
-				noteConverter();
-				//$('#' + buttonSelected).find('span:last').text(secondNote);
-			} else { 
-				$('#' + buttonSelected).addClass("singleNote");
-				noteConverter();
-				//$('#' + buttonSelected).find('span:first').text(firstNote);	
 		}
 		
-		// add Sharp or Flat. 
-		if (firstNote != undefined) {
-			secondNote = $(this).data('value');
+		//previous note exists
+		if (oldNoteTemp == newNoteTemp) {
+			return;
 			
-			if (secondNote == "#" || secondNote == "b") {
-				$('#' + buttonSelected).addClass("doubleNote");
+		} else if (oldNoteTemp != newNoteTemp) { 
+			if (butPressed == "sharp") {
+    			$('.noteNameModSharp').toggleClass("noteNameDown");
+				$('#nlsSharp').toggleClass("noteHighlight");
+				$('.noteNameModFlat').removeClass("noteNameDown");
+				$('#nlsFlat').removeClass("noteHighlight");
+				
+				secondNote = newNoteTemp;
+				
+				//oldNote the same, toggle Sharp or Flat
+				if (oldNoteTemp == firstNote) {
+					secondNote = undefined;
+					noteConverter();
+					return;
+				
+				} else if (oldNoteTemp == newNoteTemp) {
+					$('.noteNameModSharp').removeClass("noteNameDown");
+					$('#nlsSharp').removeClass("noteHighlight");
+					secondNote = undefined;
+					noteConverter();
+					return;
+					
+				} else {
+					return;	
+				}
+				
+			} else if (butPressed == "flat") {
+				$('.noteNameModFlat').toggleClass("noteNameDown");
+				$('#nlsFlat').toggleClass("noteHighlight");
+				$('.noteNameModSharp').removeClass("noteNameDown");
+				$('#nlsSharp').removeClass("noteHighlight");
+				
+				secondNote = newNoteTemp;
+				
+				if (firstNote != undefined) {
+					noteConverter();
+				
+				} else if (oldNoteTemp == newNoteTemp) {
+					$('.noteNameModSharp').removeClass("noteNameDown");
+					$('#nlsSharp').removeClass("noteHighlight");
+					secondNote = undefined;
+					noteConverter();
+					
+				} else {
+					return;	
+				}
+				
+			} else {
+				$('.noteName').removeClass("noteNameDown");
+				$('.noteLink').removeClass("noteHighlight");
+				
+				//add to currently selected button
+				$(this.parentNode).addClass("noteNameDown");
+				$(this).addClass("noteHighlight");
+				
+				firstNote = newNoteTemp;
 				noteConverter();
-				//$('#' + buttonSelected).find('span:last').text(secondNote);
-						    				
-    			} else {
-    				secondNote = undefined;
-    			} 
-			}	 
-		})
+			}		
+		}	
 	})
+})
 	
-	function noteConverter() {
-		//C to Bb Conversion
-		if (firstInstSelected == "C" || secondInstSelected == "Bb") {
-			if (firstNote == "A" && secondNote == undefined) {
-				$('#' + buttonSelected).find('span:first').text("B");
-				$('#' + buttonSelected).find('span:last').text("");			
-			}
-			
-			if (firstNote == "A" && secondNote == "#" || firstNote == "B" && secondNote == "b" ) {
-				$('#' + buttonSelected).find('span:first').text("C");
-				$('#' + buttonSelected).find('span:last').text("");	
-			}
-			
-			if (firstNote == "B" && secondNote == undefined) {
-				$('#' + buttonSelected).find('span:first').text("C");
-				$('#' + buttonSelected).find('span:last').text("#");			
-			}
-			
-			if (firstNote == "C" && secondNote == undefined) {
-				$('#' + buttonSelected).find('span:first').text("D");
-				$('#' + buttonSelected).find('span:last').text("");			
-			}
-			
-			if (firstNote == "C" && secondNote == "#" || firstNote == "D" && secondNote == "b" ) {
-				$('#' + buttonSelected).find('span:first').text("E");
-				$('#' + buttonSelected).find('span:last').text("b");			
-			}
-			
-			if (firstNote == "D" && secondNote == undefined) {
-				$('#' + buttonSelected).find('span:first').text("E");
-				$('#' + buttonSelected).find('span:last').text("");		
-			}
-			
-			if (firstNote == "D" && secondNote == "#" || firstNote == "E" && secondNote == "b" ) {
-				$('#' + buttonSelected).find('span:first').text("F");
-				$('#' + buttonSelected).find('span:last').text("");			
-			}
-			
-			if (firstNote == "E" && secondNote == undefined) {
-				$('#' + buttonSelected).find('span:first').text("F");
-				$('#' + buttonSelected).find('span:last').text("#");		
-			}
-			
-			if (firstNote == "F" && secondNote == undefined) {
-				$('#' + buttonSelected).find('span:first').text("G");
-				$('#' + buttonSelected).find('span:last').text("");		
-			}
-			
-			if (firstNote == "F" && secondNote == "#" || firstNote == "G" && secondNote == "b" ) {
-				$('#' + buttonSelected).find('span:first').text("A");
-				$('#' + buttonSelected).find('span:last').text("b");			
-			}
-			
-			if (firstNote == "G" && secondNote == undefined) {
-				$('#' + buttonSelected).find('span:first').text("A");
-				$('#' + buttonSelected).find('span:last').text("");		
-			}
-			
-			if (firstNote == "G" && secondNote == "#" || firstNote == "A" && secondNote == "b" ) {
-				$('#' + buttonSelected).find('span:first').text("B");
-				$('#' + buttonSelected).find('span:last').text("b");			
-			}
+function noteConverter() {
+	//C to Bb Conversion
+	if (firstInstSelected == "C" && secondInstSelected == "Bb") {
+		if (firstNote == "A" && secondNote == undefined) {
+			$('#' + buttonSelected).find('span:first').text("B").addClass("singleNote");
+			$('#' + buttonSelected).find('span:last').text("");	
+			return;		
 		}
 		
-		if (firstInstSelected == "bariSax" || secondInstSelected == "trumpet") {
-			if (firstNote == "A") {
-				$('#' + buttonSelected).find('span:first').text("D");
-				$('#' + buttonSelected).find('span:last').text("#");			
-			}
-			
-			if (firstNote == "B") {
-				$('#' + buttonSelected).find('span:first').text("G");
-				$('#' + buttonSelected).find('span:last').text("");	
-			}
-			
-			if (firstNote == "C") {
-				$('#' + buttonSelected).find('span:first').text("E");
-				$('#' + buttonSelected).find('span:last').text("b");			
-			}
-			
-			if (firstNote == "D") {
-				$('#' + buttonSelected).find('span:first').text("A");
-				$('#' + buttonSelected).find('span:last').text("#");			
-			}
-			
-			if (firstNote == "E") {
-				$('#' + buttonSelected).find('span:first').text("C");
-				$('#' + buttonSelected).find('span:last').text("#");			
-			}
-			
-			if (firstNote == "F") {
-				$('#' + buttonSelected).find('span:first').text("G");
-				$('#' + buttonSelected).find('span:last').text("");		
-			}
-			
-			if (firstNote == "G") {
-				$('#' + buttonSelected).find('span:first').text("A");
-				$('#' + buttonSelected).find('span:last').text("b");			
-			}
+		if (firstNote == "A" && secondNote == "#" || firstNote == "B" && secondNote == "b" ) {
+			$('#' + buttonSelected).find('span:first').text("C");
+			$('#' + buttonSelected).find('span:last').text("");
+			return;	
 		}
-
 		
+		if (firstNote == "B" && secondNote == undefined) {
+			$('#' + buttonSelected).find('span:first').text("C");
+			$('#' + buttonSelected).find('span:last').text("#");
+			return;			
+		}
 		
+		if (firstNote == "C" && secondNote == undefined) {
+			$('#' + buttonSelected).find('span:first').text("D");
+			$('#' + buttonSelected).find('span:last').text("");
+			return;			
+		}
+		
+		if (firstNote == "C" && secondNote == "#" || firstNote == "D" && secondNote == "b" ) {
+			$('#' + buttonSelected).addClass("doubleNote");
+			$('#' + buttonSelected).find('span:first').text("E");
+			$('#' + buttonSelected).find('span:last').text("b");
+			return;			
+		}
+		
+		if (firstNote == "D" && secondNote == undefined) {
+			$('#' + buttonSelected).find('span:first').text("E");
+			$('#' + buttonSelected).find('span:last').text("");
+			return;		
+		}
+		
+		if (firstNote == "D" && secondNote == "#" || firstNote == "E" && secondNote == "b" ) {
+			$('#' + buttonSelected).find('span:first').text("F");
+			$('#' + buttonSelected).find('span:last').text("");
+			return;			
+		}
+		
+		if (firstNote == "E" && secondNote == undefined) {
+			$('#' + buttonSelected).addClass("doubleNote");
+			$('#' + buttonSelected).find('span:first').text("F");
+			$('#' + buttonSelected).find('span:last').text("#");
+			return;		
+		}
+		
+		if (firstNote == "F" && secondNote == undefined) {
+			$('#' + buttonSelected).find('span:first').text("G");
+			$('#' + buttonSelected).find('span:last').text("");
+			return;		
+		}
+		
+		if (firstNote == "F" && secondNote == "#" || firstNote == "G" && secondNote == "b" ) {
+			$('#' + buttonSelected).find('span:first').text("A");
+			$('#' + buttonSelected).find('span:last').text("b");
+			return;			
+		}
+		
+		if (firstNote == "G" && secondNote == undefined) {
+			$('#' + buttonSelected).find('span:first').text("A");
+			$('#' + buttonSelected).find('span:last').text("");	
+			return;	
+		}
+		
+		if (firstNote == "G" && secondNote == "#" || firstNote == "A" && secondNote == "b" ) {
+			$('#' + buttonSelected).find('span:first').text("B");
+			$('#' + buttonSelected).find('span:last').text("b");
+			return;			
+		}
 	}
+	
+	
+}
