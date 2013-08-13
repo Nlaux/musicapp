@@ -77,8 +77,15 @@ a.instBtnLink, a.instBtnLink2  {
 	margin:0 auto;
 }
 
-#instBtnWrapper {
+.modalWrapper {
+	margin:0 auto;
+	text-align:center;
+}
+
+#transPickerWrapper {
 	width:100%;
+	margin:0;
+	padding:0;
 }
 
 .instBox, .instBox2 {
@@ -99,19 +106,6 @@ a.instBtnLink, a.instBtnLink2  {
     background: linear-gradient(to bottom,  #f2f6f8 0%,#d8e1e7 50%,#b5c6d0 51%,#e0eff9 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f6f8', endColorstr='#e0eff9',GradientType=0 ); /* IE6-9 */
 }
-
-
-#transPickerWrapper {
-	width:100%;
-	margin:0;
-	padding:0;
-}
-
-.modalWrapper {
-	margin:0 auto;
-	text-align:center;
-}
-
 .noteWrapper {
 	width:285px;
 	height:310px;
@@ -271,16 +265,77 @@ hr {
 
 /*--- Media Queries --*/
 
-/*-----Portrait layout - 480px-----*/
-/* Landscape layout (with min-width) */
-/*
-@media screen and (min-aspect-ratio: 1/1) and (min-width:600px) {
-    .app {
-        background-position:left center;
-        padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
-        /*margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
-                                      /* offset horizontal: half of image width and text area width */
-   /* }
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width : 320px) {
+	#contentWrapper {
+		width:320px;
+		margin:0;
+	}
+	
+	.modalWrapper {
+		margin:0;
+		text-align:center;
+	}
+	#instBtnWrapper {
+		width:320px;
+	}
+	
+	.instBox, .instBox2 {
+		width:60px;
+		margin:0 0 10px 10px;	
+	}
+	
+	#transPickerWrapper {
+		width:320px;
+	}
+	
+	.box, .resetBox {
+		width:60px;
+		height:60px;
+	}
+	
+	.resetImg {
+		margin:3px 0 0 6px;	
+	}
 }
-*/
+
+/* Smartphones (landscape) ----------- */
+@media only screen and (min-width : 321px) {
+	#contentWrapper {
+		width:480px;
+		margin:0 auto;
+	}
+	
+	#instBtnWrapper {
+		width:480px;
+	}
+	
+	.modalWrapper {
+		margin:0 auto;
+		text-align:center;
+	}
+	
+	#transPickerWrapper {
+		width:480px;
+	}
+}
+
+/* iPhone 4 ----------- */
+@media only screen and (-webkit-min-device-pixel-ratio : 1.5), only screen and (min-device-pixel-ratio : 1.5) {
+/* Styles */
+}
+
+/* small Tablet (portrait) ----------- */
+@media only screen and (min-device-width : 599px) and (max-device-width : 1024px) and (orientation : portrait) {
+
+}
+
+/* iPads (portrait) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+
+}
+/* iPads (landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+/* Styles */
+}
 
