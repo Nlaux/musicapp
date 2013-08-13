@@ -293,6 +293,15 @@ hr {
 	.resetImg {
 		margin:3px 0 0 6px;	
 	}
+	
+	hr {
+		width: 283px;
+		margin: 10px 0 10px 24px;	
+	}
+	
+	.box, .resetBox {
+		margin: 0 0 0 10px;	
+	}
 }
 
 /* Smartphones (landscape) ----------- */
@@ -319,6 +328,7 @@ hr {
 		width:375px;
 		margin:10px 0 20px 45px;
 	}
+	
 }
 
 /* iPhone 4 ----------- */
