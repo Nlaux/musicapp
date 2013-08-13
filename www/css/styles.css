@@ -1,5 +1,4 @@
-/*----- Key transposer v1.0
-        Nick Laux ------*/
+/*----- Key transposer v1.0 Nick Laux ------*/
 
 
 * {
@@ -240,9 +239,6 @@ a.instBtnLink, a.instBtnLink2  {
 
 /*-----Misc-----*/
 hr {
-	width:375px;
-	margin:10px 0 20px 125px;
-	text-align:center;
 	color:#bbb;
 }
 
@@ -317,6 +313,11 @@ hr {
 	
 	#transPickerWrapper {
 		width:480px;
+	}
+	
+	hr {
+		width:375px;
+		margin:10px 0 20px 45px;
 	}
 }
 
