@@ -151,8 +151,21 @@ $(function() {
 		//previous note exists
 		if (oldNoteTemp == newNoteTemp) {
 			return;
+		}
+		
+		//switching to completely new note with no sharp or flat selected yet	
+		if (newNoteTemp != firstNote && secondNote != undefined) {
+			$('.noteNameModSharp').removeClass("noteNameDown");
+			$('#nlsSharp').removeClass("noteHighlight");
+			$('.noteNameModFlat').removeClass("noteNameDown");
+			$('#nlsFlat').removeClass("noteHighlight");
+				
+			secondNote = undefined;
+			noteConverter();
+			return;
+		}
 			
-		} else if (oldNoteTemp != newNoteTemp) { 
+		if (oldNoteTemp != newNoteTemp) { 
 			if (butPressed == "sharp") {
     			$('.noteNameModSharp').toggleClass("noteNameDown");
 				$('#nlsSharp').toggleClass("noteHighlight");
