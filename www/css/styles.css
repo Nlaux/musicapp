@@ -159,11 +159,19 @@ a.instBtnLink, a.instBtnLink2  {
 }
 
 .singleNote {
-	margin:8px 0 0 20px;	
+	float:left;
+	margin:10px 0px 0px 20px;	
 }
 
 .doubleNote {
-	margin:8px 0 0 5px;
+	float:left;
+	margin:13px 0 0 11px;
+}
+
+.supNote {
+	float:left;
+	margin-top:12px;
+	font-size:28px;
 }
 
 
@@ -228,14 +236,6 @@ a.instBtnLink, a.instBtnLink2  {
 	font-weight: bold;
 	color:#000;
 }
-
-.supNote {
-	margin-top:-10px;
-	font-size:30px;
-	vertical-align: top;
-}
-
-
 
 /*-----Misc-----*/
 hr {

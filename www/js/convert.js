@@ -159,10 +159,16 @@ $(function() {
 				$('.noteNameModFlat').removeClass("noteNameDown");
 				$('#nlsFlat').removeClass("noteHighlight");
 				
-				secondNote = newNoteTemp;
 				
-				//oldNote the same, toggle Sharp or Flat
-				if (oldNoteTemp == firstNote) {
+				//second Note Undefined
+				if (secondNote == undefined) {
+					secondNote = newNoteTemp;
+					noteConverter();
+					return;
+				}
+				
+				//oldNote the same as newNote, toggle Sharp or Flat
+				if (newNoteTemp == secondNote) {
 					secondNote = undefined;
 					noteConverter();
 					return;
@@ -184,20 +190,30 @@ $(function() {
 				$('.noteNameModSharp').removeClass("noteNameDown");
 				$('#nlsSharp').removeClass("noteHighlight");
 				
-				secondNote = newNoteTemp;
-				
-				if (firstNote != undefined) {
+				//second Note Undefined
+				if (secondNote == undefined) {
+					secondNote = newNoteTemp;
 					noteConverter();
+					return;
+				}
 				
-				} else if (oldNoteTemp == newNoteTemp) {
-					$('.noteNameModSharp').removeClass("noteNameDown");
-					$('#nlsSharp').removeClass("noteHighlight");
+				//oldNote the same as newNote, toggle Sharp or Flat
+				if (newNoteTemp == secondNote) {
 					secondNote = undefined;
 					noteConverter();
+					return;
+				
+				} else if (oldNoteTemp == newNoteTemp) {
+					$('.noteNameModFlat').removeClass("noteNameDown");
+					$('#nlsFlat').removeClass("noteHighlight");
+					secondNote = undefined;
+					noteConverter();
+					return;
 					
 				} else {
 					return;	
 				}
+
 				
 			} else {
 				$('.noteName').removeClass("noteNameDown");
@@ -224,69 +240,67 @@ function noteConverter() {
 		}
 		
 		if (firstNote == "A" && secondNote == "#" || firstNote == "B" && secondNote == "b" ) {
-			$('#' + buttonSelected).find('span:first').text("C");
+			$('#' + buttonSelected).find('span:first').text("C").addClass("singleNote");
 			$('#' + buttonSelected).find('span:last').text("");
 			return;	
 		}
 		
 		if (firstNote == "B" && secondNote == undefined) {
-			$('#' + buttonSelected).find('span:first').text("C");
+			$('#' + buttonSelected).find('span:first').text("C").addClass("doubleNote");
 			$('#' + buttonSelected).find('span:last').text("#");
 			return;			
 		}
 		
 		if (firstNote == "C" && secondNote == undefined) {
-			$('#' + buttonSelected).find('span:first').text("D");
+			$('#' + buttonSelected).find('span:first').text("D").addClass("singleNote");
 			$('#' + buttonSelected).find('span:last').text("");
 			return;			
 		}
 		
 		if (firstNote == "C" && secondNote == "#" || firstNote == "D" && secondNote == "b" ) {
-			$('#' + buttonSelected).addClass("doubleNote");
-			$('#' + buttonSelected).find('span:first').text("E");
+			$('#' + buttonSelected).find('span:first').text("E").addClass("doubleNote");
 			$('#' + buttonSelected).find('span:last').text("b");
 			return;			
 		}
 		
 		if (firstNote == "D" && secondNote == undefined) {
-			$('#' + buttonSelected).find('span:first').text("E");
+			$('#' + buttonSelected).find('span:first').text("E").addClass("singleNote");
 			$('#' + buttonSelected).find('span:last').text("");
 			return;		
 		}
 		
 		if (firstNote == "D" && secondNote == "#" || firstNote == "E" && secondNote == "b" ) {
-			$('#' + buttonSelected).find('span:first').text("F");
+			$('#' + buttonSelected).find('span:first').text("F").addClass("singleNote");
 			$('#' + buttonSelected).find('span:last').text("");
 			return;			
 		}
 		
 		if (firstNote == "E" && secondNote == undefined) {
-			$('#' + buttonSelected).addClass("doubleNote");
-			$('#' + buttonSelected).find('span:first').text("F");
+			$('#' + buttonSelected).find('span:first').text("F").addClass("doubleNote");
 			$('#' + buttonSelected).find('span:last').text("#");
 			return;		
 		}
 		
 		if (firstNote == "F" && secondNote == undefined) {
-			$('#' + buttonSelected).find('span:first').text("G");
+			$('#' + buttonSelected).find('span:first').text("G").addClass("singleNote");
 			$('#' + buttonSelected).find('span:last').text("");
 			return;		
 		}
 		
 		if (firstNote == "F" && secondNote == "#" || firstNote == "G" && secondNote == "b" ) {
-			$('#' + buttonSelected).find('span:first').text("A");
+			$('#' + buttonSelected).find('span:first').text("A").addClass("doubleNote");
 			$('#' + buttonSelected).find('span:last').text("b");
 			return;			
 		}
 		
 		if (firstNote == "G" && secondNote == undefined) {
-			$('#' + buttonSelected).find('span:first').text("A");
+			$('#' + buttonSelected).find('span:first').text("A").addClass("singleNote");
 			$('#' + buttonSelected).find('span:last').text("");	
 			return;	
 		}
 		
 		if (firstNote == "G" && secondNote == "#" || firstNote == "A" && secondNote == "b" ) {
-			$('#' + buttonSelected).find('span:first').text("B");
+			$('#' + buttonSelected).find('span:first').text("B").addClass("doubleNote");
 			$('#' + buttonSelected).find('span:last').text("b");
 			return;			
 		}
