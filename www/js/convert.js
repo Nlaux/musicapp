@@ -5,8 +5,10 @@ $(function() {
 		//toggle button image to highlight
 		$('#resetBtnImg').removeClass("resetImg");
 		$('#resetBtnImg').addClass("resetImgHover");
+		
 		//reset note buttons
 		firstInstSelected = undefined, secondInstSelected = undefined, firstNote = undefined, secondNote = undefined, btnLabelSelected = undefined, oldBtnSelected = undefined, newBtnSelected = undefined;
+		
 		$('.instBox').removeClass("instBoxDown");
 		$('.instBtnLink').removeClass("instBtnLinkHighlight");
 		$('.instBox2').removeClass("instBoxDown2");
@@ -25,6 +27,7 @@ $(function() {
 		$('#but6').find('span:last').text("");
 		$('#but7').find('span:first').text("");
 		$('#but7').find('span:last').text("");
+		
 		//reset back to normal button img
 		removeRHI();
 	})
@@ -38,12 +41,15 @@ function removeRHI() {
 $(function() {
 	$('.instBtnLink').click(function() {
 		firstInstSelected = $(this).data('value');
+		
 		//remove other selected buttons
 		$('.instBox').removeClass("instBoxDown");
 		$('.instBtnLink').removeClass("instBtnLinkHighlight");
+		
 		//add highlight to currently selected button
 		$(this.childNodes).addClass("instBoxDown");
 		$(this).addClass("instBtnLinkHighlight");
+		
 		//if same button selected, alert
 		if (firstInstSelected == secondInstSelected) {
 			alert("Can't convert from same key.");
@@ -57,12 +63,15 @@ $(function() {
 $(function() {
 	$('.instBtnLink2').click(function() {
 		secondInstSelected = $(this).data('value');
+		
 		//remove other selected buttons
 		$('.instBox2').removeClass("instBoxDown2");
 		$('.instBtnLink2').removeClass("instBtnLinkHighlight2");
+		
 		//add highlight to currently selected button
 		$(this.childNodes).addClass("instBoxDown2");
 		$(this).addClass("instBtnLinkHighlight2");
+		
 		//if same button selected, alert
 		if (secondInstSelected == firstInstSelected) {
 			alert("Can't convert from same key.");
@@ -76,6 +85,7 @@ $(function() {
 $(function() {
 	$('.buttonLink').click(function() {
 		btnLabelSelected = $(this).data('name');
+		
 		//reset Note Selections
 		$('.noteName').removeClass("noteNameDown");
 		$('.noteLink').removeClass("noteHighlight");
@@ -146,23 +156,27 @@ $(function() {
 				$('#nlsSharp').toggleClass("noteHighlight");
 				$('.noteNameModFlat').removeClass("noteNameDown");
 				$('#nlsFlat').removeClass("noteHighlight");
+				
 				//second Note Undefined
 				if (secondNote == undefined) {
 					secondNote = newNoteTemp;
 					noteConverter();
 					return;
 				}
+				
 				//oldNote the same as newNote, toggle Sharp or Flat
 				if (newNoteTemp == secondNote) {
 					secondNote = undefined;
 					noteConverter();
 					return;
+				
 				} else if (oldNoteTemp == newNoteTemp) {
 					$('.noteNameModSharp').removeClass("noteNameDown");
 					$('#nlsSharp').removeClass("noteHighlight");
 					secondNote = undefined;
 					noteConverter();
 					return;
+				
 				} else {
 					return;
 				}
@@ -172,12 +186,14 @@ $(function() {
 				$('#nlsFlat').toggleClass("noteHighlight");
 				$('.noteNameModSharp').removeClass("noteNameDown");
 				$('#nlsSharp').removeClass("noteHighlight");
+				
 				//second Note Undefined
 				if (secondNote == undefined) {
 					secondNote = newNoteTemp;
 					noteConverter();
 					return;
 				}
+				
 				//oldNote the same as newNote, toggle Sharp or Flat
 				if (newNoteTemp == secondNote) {
 					secondNote = undefined;
@@ -196,6 +212,7 @@ $(function() {
 			} else {
 				$('.noteName').removeClass("noteNameDown");
 				$('.noteLink').removeClass("noteHighlight");
+				
 				//add to currently selected button
 				$(this.parentNode).addClass("noteNameDown");
 				$(this).addClass("noteHighlight");
